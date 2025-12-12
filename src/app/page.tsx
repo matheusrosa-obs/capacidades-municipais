@@ -33,7 +33,7 @@ const MOCK: MunicipalityRecord[] = [
       ],
       Infraestrutura: [
         { key: "log", label: "Logística", value_0_20: 12.3 },
-        { key: "digital", label: "Infra digital", value_0_20: 16.0 },
+        { key: "digital", label: "Infra digital", value_0_20: 20 },
       ],
       CapitalHumano: [
         { key: "esc", label: "Escolaridade", value_0_20: 15.6 },
