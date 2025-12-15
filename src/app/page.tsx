@@ -282,7 +282,7 @@ const MOCK: MunicipalityRecord[] = [
         { key: "bolsa_val", label: "Valor médio Bolsa Família", value_0_20: 7.8 },
       ],
       Seguranca: [
-        { key: "tax_crim", label: "Taxa de criminalidade", value_0_20: 12.7 },
+        { key: "tax_crim", label: "Taxa de criminalidade", value_0_20: 10 },
         { key: "homicidios", label: "Homicídios", value_0_20: 14.1 },
         { key: "acid_rodov", label: "Acidentes rodoviários", value_0_20: 13.2 },
         { key: "obit_transp", label: "Óbitos no transporte", value_0_20: 14.7 },
