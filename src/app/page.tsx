@@ -31,8 +31,6 @@ const MOCK: MunicipalityRecord[] = [
         { key: "emp_form", label: "Emprego formal", value_0_20: 16.1 },
         { key: "cresc_emp", label: "Crescimento do emprego", value_0_20: 12.4 },
         { key: "complex", label: "Complexidade econômica", value_0_20: 19.2 },
-        { key: "bolsa_fam", label: "Famílias no Bolsa Família", value_0_20: 8.5 },
-        { key: "bolsa_val", label: "Valor médio Bolsa Família", value_0_20: 9.0 },
       ],
       CapitalHumano: [
         { key: "pop", label: "População", value_0_20: 15.6 },
@@ -48,6 +46,8 @@ const MOCK: MunicipalityRecord[] = [
         { key: "renda_pc", label: "Renda per capita", value_0_20: 13 },
         { key: "gasto_habit", label: "Gasto com habitação", value_0_20: 6 },
         { key: "expec_vida", label: "Expectativa de vida", value_0_20: 18 },
+        { key: "bolsa_fam", label: "Famílias no Bolsa Família", value_0_20: 8.5 },
+        { key: "bolsa_val", label: "Valor médio Bolsa Família", value_0_20: 9.0 },
       ],
       Seguranca: [
         { key: "tax_crim", label: "Taxa de criminalidade", value_0_20: 14 },
@@ -59,11 +59,11 @@ const MOCK: MunicipalityRecord[] = [
         { key: "inten_emi", label: "Intensidade de emissões", value_0_20: 14 },
         { key: "emi_pc", label: "Emissões de CO2 per capita", value_0_20: 18 },
         { key: "dest_nat", label: "Desastres naturais", value_0_20: 14 },
-      ],
-      Saude: [
         { key: "ag_pot", label: "Acesso à água potável", value_0_20: 17.5 },
         { key: "esg_san", label: "Esgotamento sanitário", value_0_20: 19.0 },
         { key: "col_lixo", label: "Coleta de lixo", value_0_20: 18.0 },
+      ],
+      Saude: [
         { key: "estab_saude", label: "Estabelecimentos de saúde", value_0_20: 14 },
         { key: "leitos", label: "Leitos hospitalares", value_0_20: 12.0 },
         { key: "leitos_uti", label: "Leitos de UTI", value_0_20: 15.0 },
@@ -108,8 +108,6 @@ const MOCK: MunicipalityRecord[] = [
         { key: "emp_form", label: "Emprego formal", value_0_20: 17.2 },
         { key: "cresc_emp", label: "Crescimento do emprego", value_0_20: 13.7 },
         { key: "complex", label: "Complexidade econômica", value_0_20: 18.7 },
-        { key: "bolsa_fam", label: "Famílias no Bolsa Família", value_0_20: 7.9 },
-        { key: "bolsa_val", label: "Valor médio Bolsa Família", value_0_20: 8.7 },
       ],
       CapitalHumano: [
         { key: "pop", label: "População", value_0_20: 18.0 },
@@ -125,6 +123,8 @@ const MOCK: MunicipalityRecord[] = [
         { key: "renda_pc", label: "Renda per capita", value_0_20: 14.5 },
         { key: "gasto_habit", label: "Gasto com habitação", value_0_20: 7.5 },
         { key: "expec_vida", label: "Expectativa de vida", value_0_20: 17.2 },
+        { key: "bolsa_fam", label: "Famílias no Bolsa Família", value_0_20: 7.9 },
+        { key: "bolsa_val", label: "Valor médio Bolsa Família", value_0_20: 8.7 },
       ],
       Seguranca: [
         { key: "tax_crim", label: "Taxa de criminalidade", value_0_20: 13.5 },
@@ -136,11 +136,12 @@ const MOCK: MunicipalityRecord[] = [
         { key: "inten_emi", label: "Intensidade de emissões", value_0_20: 13.2 },
         { key: "emi_pc", label: "Emissões de CO2 per capita", value_0_20: 17.1 },
         { key: "dest_nat", label: "Desastres naturais", value_0_20: 13.8 },
-      ],
-      Saude: [
         { key: "ag_pot", label: "Acesso à água potável", value_0_20: 18.1 },
         { key: "esg_san", label: "Esgotamento sanitário", value_0_20: 18.7 },
         { key: "col_lixo", label: "Coleta de lixo", value_0_20: 17.6 },
+      ],
+      Saude: [
+
         { key: "estab_saude", label: "Estabelecimentos de saúde", value_0_20: 13.8 },
         { key: "leitos", label: "Leitos hospitalares", value_0_20: 13.2 },
         { key: "leitos_uti", label: "Leitos de UTI", value_0_20: 14.7 },
@@ -153,7 +154,7 @@ const MOCK: MunicipalityRecord[] = [
         { key: "quant_empr", label: "Quantidade de empresas", value_0_20: 16.2 },
         { key: "fac_empr", label: "Facilidade de abertura de empresas", value_0_20: 16.8 },
         { key: "rend_trabalho", label: "Rendimento médio do trabalho", value_0_20: 13.9 },
-        { key: "bolsas_pesq", label: "Bolsas de pesquisa", value_0_20: 17.5 },
+        { key: "bolsas_pesq", label: "Bolsas de pesquisa", value_0_20: 14 },
       ],
       Governanca: [
         { key: "alert_lrf", label: "Alerta LRF", value_0_20: 12.5 },
@@ -164,7 +165,7 @@ const MOCK: MunicipalityRecord[] = [
       ],
       Infraestrutura: [
         { key: "qual_estrad", label: "Qualidade das estradas", value_0_20: 13.1 },
-        { key: "banda_fixa", label: "Acesso à banda larga fixa", value_0_20: 19.1 },
+        { key: "banda_fixa", label: "Acesso à banda larga fixa", value_0_20: 14 },
         { key: "banda_movel", label: "Acesso à banda larga móvel", value_0_20: 17.8 },
       ],
     },
@@ -185,8 +186,6 @@ const MOCK: MunicipalityRecord[] = [
         { key: "emp_form", label: "Emprego formal", value_0_20: 15.4 },
         { key: "cresc_emp", label: "Crescimento do emprego", value_0_20: 11.9 },
         { key: "complex", label: "Complexidade econômica", value_0_20: 17.1 },
-        { key: "bolsa_fam", label: "Famílias no Bolsa Família", value_0_20: 7.2 },
-        { key: "bolsa_val", label: "Valor médio Bolsa Família", value_0_20: 8.1 },
       ],
       CapitalHumano: [
         { key: "pop", label: "População", value_0_20: 14.9 },
@@ -202,6 +201,8 @@ const MOCK: MunicipalityRecord[] = [
         { key: "renda_pc", label: "Renda per capita", value_0_20: 13.8 },
         { key: "gasto_habit", label: "Gasto com habitação", value_0_20: 6.8 },
         { key: "expec_vida", label: "Expectativa de vida", value_0_20: 16.5 },
+        { key: "bolsa_fam", label: "Famílias no Bolsa Família", value_0_20: 7.2 },
+        { key: "bolsa_val", label: "Valor médio Bolsa Família", value_0_20: 8.1 },
       ],
       Seguranca: [
         { key: "tax_crim", label: "Taxa de criminalidade", value_0_20: 13.1 },
@@ -213,11 +214,11 @@ const MOCK: MunicipalityRecord[] = [
         { key: "inten_emi", label: "Intensidade de emissões", value_0_20: 12.7 },
         { key: "emi_pc", label: "Emissões de CO2 per capita", value_0_20: 16.3 },
         { key: "dest_nat", label: "Desastres naturais", value_0_20: 13.2 },
-      ],
-      Saude: [
         { key: "ag_pot", label: "Acesso à água potável", value_0_20: 17.2 },
         { key: "esg_san", label: "Esgotamento sanitário", value_0_20: 18.1 },
         { key: "col_lixo", label: "Coleta de lixo", value_0_20: 16.8 },
+      ],
+      Saude: [
         { key: "estab_saude", label: "Estabelecimentos de saúde", value_0_20: 13.2 },
         { key: "leitos", label: "Leitos hospitalares", value_0_20: 12.7 },
         { key: "leitos_uti", label: "Leitos de UTI", value_0_20: 14.1 },
@@ -262,8 +263,6 @@ const MOCK: MunicipalityRecord[] = [
         { key: "emp_form", label: "Emprego formal", value_0_20: 12 },
         { key: "cresc_emp", label: "Crescimento do emprego", value_0_20: 16 },
         { key: "complex", label: "Complexidade econômica", value_0_20: 12 },
-        { key: "bolsa_fam", label: "Famílias no Bolsa Família", value_0_20: 6.9 },
-        { key: "bolsa_val", label: "Valor médio Bolsa Família", value_0_20: 7.8 },
       ],
       CapitalHumano: [
         { key: "pop", label: "População", value_0_20: 13.7 },
@@ -279,6 +278,8 @@ const MOCK: MunicipalityRecord[] = [
         { key: "renda_pc", label: "Renda per capita", value_0_20: 13.1 },
         { key: "gasto_habit", label: "Gasto com habitação", value_0_20: 6.2 },
         { key: "expec_vida", label: "Expectativa de vida", value_0_20: 15.8 },
+        { key: "bolsa_fam", label: "Famílias no Bolsa Família", value_0_20: 6.9 },
+        { key: "bolsa_val", label: "Valor médio Bolsa Família", value_0_20: 7.8 },
       ],
       Seguranca: [
         { key: "tax_crim", label: "Taxa de criminalidade", value_0_20: 12.7 },

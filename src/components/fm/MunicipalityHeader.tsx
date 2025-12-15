@@ -77,7 +77,7 @@ export function MunicipalityHeader({ data }: { data: MunicipalityRecord }) {
         <div className="min-w-[220px] rounded-xl bg-black/20 border border-white/10 px-4 py-3">
           <div className="text-xs text-white/70">Score de capacidade média</div>
           <div className="mt-1 flex items-end justify-between gap-3">
-            <div className="text-3xl font-bold">{overallRounded.toFixed(0)}</div>
+            <div className="text-3xl font-bold">{overallRounded.toFixed(1)}</div>
           </div>
           <div className="mt-2 h-2 rounded-full bg-white/15 overflow-hidden">
             <div
