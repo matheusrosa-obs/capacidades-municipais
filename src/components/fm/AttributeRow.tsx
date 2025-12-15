@@ -33,7 +33,7 @@ export function AttributeRow({
   const tipId = `tip-${slugId(label)}`;
 
   return (
-    <div className="flex items-center justify-between gap-3 py-2">
+    <div className="flex items-center justify-between gap-3 py-1">
       <div className="flex items-center gap-2 min-w-0">
         <div className="text-sm text-zinc-200 truncate">{label}</div>
 
@@ -60,7 +60,7 @@ export function AttributeRow({
 
       <div
         className={[
-          "min-w-[56px] shrink-0 text-center text-sm font-semibold rounded-lg border px-2 py-1",
+          "min-w-[56px] shrink-0 text-center text-xs font-semibold rounded-lg border px-2 py-0",
           valueClass(Math.round(value)),
         ].join(" ")}
         title={`Valor: ${Math.round(value)}`}

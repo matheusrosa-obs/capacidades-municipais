@@ -4,10 +4,10 @@ export type AxisKey =
   | "Infraestrutura"
   | "CapitalHumano"
   | "Governanca"
-  | "Fiscal"
   | "MeioAmbiente"
-  | "Demografia"
-  | "Saude";
+  | "Saude"
+  | "QualidadeVida"
+  | "Seguranca";
 
 export type Indicator = {
   key: string;
