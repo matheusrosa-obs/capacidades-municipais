@@ -13,6 +13,7 @@ export type Indicator = {
   key: string;
   label: string;
   value_0_20: number;
+  description?: string;
 };
 
 export type MunicipalityRecord = {

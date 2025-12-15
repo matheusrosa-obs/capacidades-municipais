@@ -16,12 +16,16 @@ export function StrengthWeaknessPanel({
   data,
   axes,
   topN = 5,
+  disabled,
 }: {
   data: MunicipalityRecord;
   axes: AxisKey[];
   topN?: number;
+  disabled?: boolean;
 }) {
   const { top, bottom } = useMemo(() => {
+    if (disabled) return { top: [] as RankedItem[], bottom: [] as RankedItem[] };
+
     const all: RankedItem[] = axes.flatMap((axis) =>
       (data.axes[axis] ?? []).map((ind) => ({ ...ind, axis }))
     );
@@ -34,21 +38,19 @@ export function StrengthWeaknessPanel({
     );
 
     const top = desc.slice(0, topN);
-
-    // evita repetir itens do "top" no "bottom", quando houver poucos indicadores
     const topKeys = new Set(top.map((x) => `${x.axis}::${x.key}`));
     const bottom = asc.filter((x) => !topKeys.has(`${x.axis}::${x.key}`)).slice(0, topN);
 
     return { top, bottom };
-  }, [data, axes, topN]);
+  }, [data, axes, topN, disabled]);
 
-const Item = ({ it }: { it: RankedItem }) => {
-    return (
-        <li className="flex items-start py-1">
-            <div className="text-sm text-zinc-100 truncate">{it.label}</div>
-        </li>
-    );
-};
+  if (disabled) return null;
+
+  const Item = ({ it }: { it: RankedItem }) => (
+    <li className="flex items-start py-1">
+      <div className="text-sm text-zinc-100 truncate">{it.label}</div>
+    </li>
+  );
 
   return (
     <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">

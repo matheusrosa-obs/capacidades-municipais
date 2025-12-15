@@ -7,6 +7,7 @@ import { MunicipalityHeader } from "@/components/fm/MunicipalityHeader";
 import { AxisCard } from "@/components/fm/AxisCard";
 import { RadarAxisAverages } from "@/features/radar/RadarPanel";
 import { StrengthWeaknessPanel } from "@/components/fm/StrengthWeaknessPanel";
+import { AxisCompareCard } from "@/components/fm/AxisCompareCard";
 
 import Image from "next/image";
 
@@ -327,12 +328,20 @@ const MOCK: MunicipalityRecord[] = [
 ]
 
 export default function Page() {
-  const [selectedId, setSelectedId] = useState(MOCK[0].id);
+  const [selectedAId, setSelectedAId] = useState(MOCK[0].id);
+  const [selectedBId, setSelectedBId] = useState<string>("");
 
-  const selected = useMemo(
-    () => MOCK.find((m) => m.id === selectedId) ?? MOCK[0],
-    [selectedId]
+  const selectedA = useMemo(
+    () => MOCK.find((m) => m.id === selectedAId) ?? MOCK[0],
+    [selectedAId]
   );
+
+    const selectedB = useMemo(
+    () => (selectedBId ? MOCK.find((m) => m.id === selectedBId) : undefined),
+    [selectedBId]
+  );
+
+  const comparing = !!selectedB;
 
   return (
     <main className="min-h-dvh bg-zinc-950 text-zinc-100">
@@ -342,44 +351,79 @@ export default function Page() {
             <h1 className="text-xl font-semibold">Capacidades municipais</h1>
           </div>
 
-          <label className="text-sm">
-            <span className="block text-zinc-400 mb-2">Selecionar o município:</span>
-            <select
-              value={selectedId}
-              onChange={(e) => setSelectedId(e.target.value)}
-              className="w-[320px] rounded-xl bg-zinc-900 border border-zinc-800 px-3 py-2 outline-none"
-            >
-              {MOCK.map((m) => (
-                <option key={m.id} value={m.id}>
-                  {m.name}
-                </option>
-              ))}
-            </select>
-          </label>
+          <div className="flex flex-wrap gap-3">
+            <label className="text-sm">
+              <span className="block text-zinc-400 mb-2">Município A</span>
+              <select
+                value={selectedAId}
+                onChange={(e) => setSelectedAId(e.target.value)}
+                className="w-[280px] rounded-xl bg-zinc-900 border border-zinc-800 px-3 py-2 outline-none"
+              >
+                {MOCK.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name} ({m.uf})
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="text-sm">
+              <span className="block text-zinc-400 mb-2">Município B (opcional)</span>
+              <select
+                value={selectedBId}
+                onChange={(e) => setSelectedBId(e.target.value)}
+                className="w-[280px] rounded-xl bg-zinc-900 border border-zinc-800 px-3 py-2 outline-none"
+              >
+                <option value="">—</option>
+                {MOCK.filter((m) => m.id !== selectedAId).map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name} ({m.uf})
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
         </div>
 
-        <MunicipalityHeader data={selected} />
+        <MunicipalityHeader data={selectedA} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
-          {AXES.map((axis) => (
-            <AxisCard
-              key={axis}
-              title={AXIS_LABEL[axis]}
-              indicators={selected.axes[axis]}
-            />
-          ))}
-        </div>
+        {/* cards: single vs compare */}
+        {!comparing ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {AXES.map((axis) => (
+              <AxisCard
+                key={axis}
+                title={AXIS_LABEL[axis]}
+                indicators={selectedA.axes[axis]}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {AXES.map((axis) => (
+              <AxisCompareCard
+                key={axis}
+                axis={axis}
+                title={AXIS_LABEL[axis]}
+                a={selectedA}
+                b={selectedB!}
+                aLabel={selectedA.name}
+                bLabel={selectedB!.name}
+              />
+            ))}
+          </div>
+        )}
 
       {/* Gráfico de radar */}    
       <div className="mt-5 grid grid-cols-1 lg:grid-cols-4 gap-5 items-start">
         {/* Esquerda: Radar (não ocupa a tela toda) */}
         <div className="lg:col-span-2">
-          <RadarAxisAverages data={selected} axes={AXES} />
+          <RadarAxisAverages data={selectedA} axes={AXES} secondary={selectedB}/>
         </div>
 
         {/* Direita: espaço para outras infos */}
         <div className="lg:col-span-2">
-          <StrengthWeaknessPanel data={selected} axes={AXES} topN={5} />
+          <StrengthWeaknessPanel data={selectedA} axes={AXES} topN={5} />
         </div>
       </div>
       </div>
