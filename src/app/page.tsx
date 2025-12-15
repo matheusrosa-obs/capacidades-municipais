@@ -3,9 +3,10 @@
 import React, { useMemo, useState } from "react";
 import type { MunicipalityRecord, AxisKey } from "@/lib/types";
 import { AXIS_LABEL } from "@/lib/labels";
-
 import { MunicipalityHeader } from "@/components/fm/MunicipalityHeader";
 import { AxisCard } from "@/components/fm/AxisCard";
+import { RadarAxisAverages } from "@/features/radar/RadarPanel";
+import { StrengthWeaknessPanel } from "@/components/fm/StrengthWeaknessPanel";
 
 import Image from "next/image";
 
@@ -153,7 +154,21 @@ export default function Page() {
             />
           ))}
         </div>
+
+      {/* Gráfico de radar */}    
+      <div className="mt-5 grid grid-cols-1 lg:grid-cols-4 gap-5 items-start">
+        {/* Esquerda: Radar (não ocupa a tela toda) */}
+        <div className="lg:col-span-2">
+          <RadarAxisAverages data={selected} axes={AXES} />
+        </div>
+
+        {/* Direita: espaço para outras infos */}
+        <div className="lg:col-span-2">
+          <StrengthWeaknessPanel data={selected} axes={AXES} topN={5} />
+        </div>
       </div>
+      </div>
+
     <div className="flex justify-center py-2">
     <Image
       src="/logo_dark.png"
@@ -164,7 +179,6 @@ export default function Page() {
       priority={false}
     />
     </div>
-   
     </main>
   );
 }
