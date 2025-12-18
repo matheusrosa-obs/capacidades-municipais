@@ -8,24 +8,28 @@ function clamp20(v: number) {
   return Math.max(0, Math.min(20, v));
 }
 
-export function MunicipalityHeader({ data }: { data: MunicipalityRecord }) {
+function computeOverall(m: MunicipalityRecord) {
+  const vals: number[] = [];
+  for (const axis of Object.keys(m.axes) as (keyof typeof m.axes)[]) {
+    for (const it of m.axes[axis]) vals.push(it.value_0_20);
+  }
+  if (!vals.length) return 0;
+  const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+  return clamp20(avg);
+}
+
+export function MunicipalityHeader({ data, secondary }: { data: MunicipalityRecord; secondary?: MunicipalityRecord }) {
   const [flagOk, setFlagOk] = useState(true);
 
   // padrão: /public/flags/<id>.png  ->  /flags/<id>.png
   const flagSrc = `/flags/${data.id}.png`;
   
 
-  const overall = useMemo(() => {
-    const vals: number[] = [];
-    for (const axis of Object.keys(data.axes) as (keyof typeof data.axes)[]) {
-      for (const it of data.axes[axis]) vals.push(it.value_0_20);
-    } 
-    if (!vals.length) return 0;
-    const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
-    return clamp20(avg);
-  }, [data]);
+  const overall = useMemo(() => computeOverall(data), [data]);
+  const overallSecondary = useMemo(() => (secondary ? computeOverall(secondary) : null), [secondary]);
 
   const overallRounded = Math.round(overall * 10) / 10;
+  const overallSecondaryRounded = overallSecondary != null ? Math.round(overallSecondary * 10) / 10 : null;
 
   return (
     <div className="rounded-2xl border border-white/10 bg-gradient-to-r from-sky-700/80 to-blue-600/70 p-5 text-white shadow-md">
@@ -76,8 +80,11 @@ export function MunicipalityHeader({ data }: { data: MunicipalityRecord }) {
         {/* DIREITA: faixa/score */}
         <div className="min-w-[220px] rounded-xl bg-black/20 border border-white/10 px-4 py-3">
           <div className="text-xs text-white/70">Score de capacidade média</div>
-          <div className="mt-1 flex items-end justify-between gap-3">
+          <div className="mt-1 flex items-end gap-3">
             <div className="text-3xl font-bold">{overallRounded.toFixed(1)}</div>
+            {overallSecondaryRounded != null && (
+              <div className="text-2xl font-semibold text-white/85">{overallSecondaryRounded.toFixed(1)}</div>
+            )}
           </div>
           <div className="mt-2 h-2 rounded-full bg-white/15 overflow-hidden">
             <div

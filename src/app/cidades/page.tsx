@@ -449,7 +449,11 @@ export default function Page() {
               <span className="block text-zinc-400 mb-2">Selecione o município:</span>
               <select
                 value={selectedAId}
-                onChange={(e) => setSelectedAId(e.target.value)}
+                onChange={(e) => {
+                  const newA = e.target.value;
+                  setSelectedAId(newA);
+                  if (selectedBId === newA) setSelectedBId("");
+                }}
                 className="w-[240px] rounded-xl bg-zinc-900 border border-zinc-800 px-3 py-2 outline-none"
               >
                 {MOCK.map((m) => (
@@ -464,11 +468,14 @@ export default function Page() {
               <span className="block text-zinc-400 mb-2">Para comparar, selecione:</span>
               <select
                 value={selectedBId}
-                onChange={(e) => setSelectedBId(e.target.value)}
+                onChange={(e) => {
+                  const next = e.target.value;
+                  if (next === "" || next !== selectedAId) setSelectedBId(next);
+                }}
                 className="w-[220px] rounded-xl bg-zinc-900 border border-zinc-800 px-3 py-2 outline-none"
               >
-                <option value="">Nenhum</option>
-                {MOCK.map((m) => (
+                <option value="">-</option>
+                {MOCK.filter((m) => m.id !== selectedAId).map((m) => (
                   <option key={m.id} value={m.id}>
                     {m.name}
                   </option>
@@ -478,7 +485,7 @@ export default function Page() {
           </div>
         </div>
 
-        <MunicipalityHeader data={selectedA} />
+        <MunicipalityHeader data={selectedA} secondary={selectedB ?? undefined} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {AXES.map((axis) => (
