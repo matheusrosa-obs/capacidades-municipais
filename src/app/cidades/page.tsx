@@ -417,7 +417,7 @@ const MOCK: MunicipalityRecord[] = [
 
 export default function Page() {
   const [selectedAId, setSelectedAId] = useState(MOCK[0].id);
-  const [selectedBId, setSelectedBId] = useState(MOCK[1]?.id ?? MOCK[0].id);
+  const [selectedBId, setSelectedBId] = useState("");
 
   const selectedA = useMemo(
     () => MOCK.find((m) => m.id === selectedAId) ?? MOCK[0],
@@ -467,6 +467,7 @@ export default function Page() {
                 onChange={(e) => setSelectedBId(e.target.value)}
                 className="w-[220px] rounded-xl bg-zinc-900 border border-zinc-800 px-3 py-2 outline-none"
               >
+                <option value="">Nenhum</option>
                 {MOCK.map((m) => (
                   <option key={m.id} value={m.id}>
                     {m.name}
