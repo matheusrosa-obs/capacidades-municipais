@@ -24,7 +24,7 @@ export default function Page() {
           </Link>
           <Link
             href="/indicadores"
-            className="inline-flex items-center justify-center rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 px-6 py-1.5"
+            className="inline-flex items-center justify-center rounded-xl bg-zinc-900 hover:bg-zinc-700 border border-zinc-700 px-6 py-1.5"
           >
             Indicadores
           </Link>
