@@ -6,8 +6,7 @@ export default function Page() {
       <div className="mx-auto max-w-3xl px-4 py-16">
         <h1 className="text-2xl font-semibold">Indicadores</h1>
         <p className="mt-3 text-zinc-400">
-          Página de indicadores em construção. Em breve você poderá explorar
-          os indicadores em detalhes.
+          Página de indicadores em construção.
         </p>
 
         <div className="mt-8">
