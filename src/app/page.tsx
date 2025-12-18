@@ -7,7 +7,7 @@ export default function Page() {
     <main className="min-h-dvh bg-zinc-950 text-zinc-100 flex items-center justify-center">
       <div className="mx-auto max-w-2xl px-4 text-center flex flex-col items-center gap-4">
         <h1 className="text-3xl font-semibold">Capacidades municipais</h1>
-        <p className="mt-1 text-zinc-400">Escolha uma visualização.</p>
+        <p className="mt-1 text-zinc-400">Escolha uma visualização</p>
 
         <div className="flex items-center justify-center gap-4">
           <Link

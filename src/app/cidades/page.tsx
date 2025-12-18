@@ -417,10 +417,15 @@ const MOCK: MunicipalityRecord[] = [
 
 export default function Page() {
   const [selectedAId, setSelectedAId] = useState(MOCK[0].id);
+  const [selectedBId, setSelectedBId] = useState(MOCK[1]?.id ?? MOCK[0].id);
 
   const selectedA = useMemo(
     () => MOCK.find((m) => m.id === selectedAId) ?? MOCK[0],
     [selectedAId]
+  );
+  const selectedB = useMemo(
+    () => MOCK.find((m) => m.id === selectedBId),
+    [selectedBId]
   );
 
   return (
@@ -441,11 +446,26 @@ export default function Page() {
 
           <div className="flex flex-wrap gap-3">
             <label className="text-sm">
-              <span className="block text-zinc-400 mb-2">Selecione o município:</span>
+              <span className="block text-zinc-400 mb-2">Município A</span>
               <select
                 value={selectedAId}
                 onChange={(e) => setSelectedAId(e.target.value)}
-                className="w-[280px] rounded-xl bg-zinc-900 border border-zinc-800 px-3 py-2 outline-none"
+                className="w-[240px] rounded-xl bg-zinc-900 border border-zinc-800 px-3 py-2 outline-none"
+              >
+                {MOCK.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="text-sm">
+              <span className="block text-zinc-400 mb-2">Município B (comparar)</span>
+              <select
+                value={selectedBId}
+                onChange={(e) => setSelectedBId(e.target.value)}
+                className="w-[220px] rounded-xl bg-zinc-900 border border-zinc-800 px-3 py-2 outline-none"
               >
                 {MOCK.map((m) => (
                   <option key={m.id} value={m.id}>
@@ -465,13 +485,14 @@ export default function Page() {
               key={axis}
               title={AXIS_LABEL[axis]}
               indicators={selectedA.axes[axis]}
+              secondaryIndicators={selectedB?.axes[axis]}
             />
           ))}
         </div>
 
         <div className="mt-5 grid grid-cols-1 lg:grid-cols-4 gap-5 items-start">
           <div className="lg:col-span-2">
-            <RadarAxisAverages data={selectedA} axes={AXES} />
+            <RadarAxisAverages data={selectedA} axes={AXES} secondary={selectedB ?? undefined} />
           </div>
 
           <div className="lg:col-span-2">

@@ -24,12 +24,15 @@ export function AttributeRow({
   label,
   value,
   description,
+  secondaryValue,
 }: {
   label: string;
   value: number;
   description?: string;
+  secondaryValue?: number;
 }) {
   const v = Math.round(value * 10) / 10;
+  const v2 = secondaryValue !== undefined ? Math.round(secondaryValue * 10) / 10 : undefined;
   const tipId = `tip-${slugId(label)}`;
 
   return (
@@ -58,14 +61,28 @@ export function AttributeRow({
         )}
       </div>
 
-      <div
-        className={[
-          "min-w-[56px] shrink-0 text-center text-xs font-semibold rounded-lg border px-2 py-0",
-          valueClass(Math.round(value)),
-        ].join(" ")}
-        title={`Valor: ${Math.round(value)}`}
-      >
-        {Math.round(value)}
+      <div className="flex items-center gap-2 shrink-0">
+        <div
+          className={[
+            "min-w-[56px] text-center text-xs font-semibold rounded-lg border px-2 py-0",
+            valueClass(Math.round(value)),
+          ].join(" ")}
+          title={`Valor: ${Math.round(value)}`}
+        >
+          {Math.round(value)}
+        </div>
+
+        {v2 !== undefined && (
+          <div
+            className={[
+              "min-w-[44px] text-center text-[11px] font-semibold rounded-md border px-2 py-0 opacity-85",
+              valueClass(Math.round(secondaryValue!)),
+            ].join(" ")}
+            title={`Comparativo: ${Math.round(secondaryValue!)}`}
+          >
+            {Math.round(secondaryValue!)}
+          </div>
+        )}
       </div>
     </div>
   );
