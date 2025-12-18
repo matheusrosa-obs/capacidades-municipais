@@ -323,6 +323,83 @@ const MOCK: MunicipalityRecord[] = [
     { key: "banda_movel", label: "Acesso à banda larga móvel", value_0_20: 15.9 },
     ],
   },
+  },
+  {
+  id: "4207305",
+  name: "Imbituba",
+  uf: "SC",
+  region: "Sul",
+  highlights: ["Turismo", "Comércio", "Logística"],
+  axes: {
+    Economia: [
+    { key: "pib", label: "PIB total", value_0_20: 11 },
+    { key: "proj_pib", label: "Projeção do PIB", value_0_20: 13 },
+    { key: "estab_econ", label: "Estabilidade econômica", value_0_20: 16 },
+    { key: "vab_ind_pc", label: "VAB industrial per capita", value_0_20: 10 },
+    { key: "pib_pc", label: "PIB per capita", value_0_20: 11 },
+    { key: "emp_form", label: "Emprego formal", value_0_20: 12 },
+    { key: "cresc_emp", label: "Crescimento do emprego", value_0_20: 16 },
+    { key: "complex", label: "Complexidade econômica", value_0_20: 12 },
+    ],
+    CapitalHumano: [
+    { key: "pop", label: "População", value_0_20: 12 },
+    { key: "cresc_pop", label: "Crescimento populacional", value_0_20: 16 },
+    { key: "perf_eta", label: "Perfil etário", value_0_20: 10 },
+    { key: "unis", label: "Universidades", value_0_20: 8 },
+    { key: "niv_educ", label: "Nível educacional", value_0_20: 9 },
+    { key: "infra_esc", label: "Infraestrutura nas escolas", value_0_20: 12 },
+    { key: "pop_ext", label: "População nascida no exterior", value_0_20: 6 },
+    ],
+    QualidadeVida: [
+    { key: "igu_renda", label: "Igualdade de renda", value_0_20: 12 },
+    { key: "renda_pc", label: "Renda per capita", value_0_20: 11 },
+    { key: "gasto_habit", label: "Gasto com habitação", value_0_20: 17 },
+    { key: "expec_vida", label: "Expectativa de vida", value_0_20: 14 },
+    { key: "bolsa_fam", label: "Famílias no Bolsa Família", value_0_20: 10 },
+    { key: "bolsa_val", label: "Valor médio Bolsa Família", value_0_20: 8 },
+    ],
+    Seguranca: [
+    { key: "tax_crim", label: "Taxa de criminalidade", value_0_20: 17 },
+    { key: "homicidios", label: "Homicídios", value_0_20: 19 },
+    { key: "acid_rodov", label: "Acidentes rodoviários", value_0_20: 14 },
+    { key: "obit_transp", label: "Óbitos no transporte", value_0_20: 14 },
+    ],
+    MeioAmbiente: [
+    { key: "inten_emi", label: "Intensidade de emissões", value_0_20: 16 },
+    { key: "emi_pc", label: "Emissões de CO2 per capita", value_0_20: 13 },
+    { key: "dest_nat", label: "Desastres naturais", value_0_20: 13 },
+    { key: "ag_pot", label: "Acesso à água potável", value_0_20: 19 },
+    { key: "esg_san", label: "Esgotamento sanitário", value_0_20: 14 },
+    { key: "col_lixo", label: "Coleta de lixo", value_0_20: 17 },
+    ],
+    Saude: [
+    { key: "estab_saude", label: "Estabelecimentos de saúde", value_0_20: 13 },
+    { key: "leitos", label: "Leitos hospitalares", value_0_20: 14 },
+    { key: "leitos_uti", label: "Leitos de UTI", value_0_20: 11 },
+    { key: "leitos_uti_sus", label: "Leitos de UTI no SUS", value_0_20: 11 },
+    { key: "quant_med", label: "Quantidade de médicos", value_0_20: 12 },
+    { key: "prof_saude", label: "Profissionais de saúde", value_0_20: 13 },
+    { key: "equips_saude", label: "Equipamentos de saúde", value_0_20: 11 },
+    ],
+    Inovacao: [
+    { key: "quant_empr", label: "Quantidade de empresas", value_0_20: 15 },
+    { key: "fac_empr", label: "Facilidade de abertura de empresas", value_0_20: 14 },
+    { key: "rend_trabalho", label: "Rendimento médio do trabalho", value_0_20: 12 },
+    { key: "bolsas_pesq", label: "Bolsas de pesquisa", value_0_20: 7 },
+    ],
+    Governanca: [
+    { key: "alert_lrf", label: "Alerta LRF", value_0_20: 17 },
+    { key: "receit_trib", label: "Receita tributária efetiva", value_0_20: 14 },
+    { key: "end_liquido", label: "Endividamento líquido", value_0_20: 12 },
+    { key: "gasto_gov", label: "Gasto do governo", value_0_20: 14 },
+    { key: "transp_munic", label: "Transparência dos municípios", value_0_20: 11 },
+    ],
+    Infraestrutura: [
+    { key: "qual_estrad", label: "Qualidade das estradas", value_0_20: 11 },
+    { key: "banda_fixa", label: "Acesso à banda larga fixa", value_0_20: 18 },
+    { key: "banda_movel", label: "Acesso à banda larga móvel", value_0_20: 16 },
+    ],
+  },
   }
 ]
 
@@ -344,7 +421,7 @@ export default function Page() {
 
       <div className="flex flex-wrap gap-3">
       <label className="text-sm">
-        <span className="block text-zinc-400 mb-2">Município</span>
+        <span className="block text-zinc-400 mb-2">Selecione o município:</span>
         <select
         value={selectedAId}
         onChange={(e) => setSelectedAId(e.target.value)}
