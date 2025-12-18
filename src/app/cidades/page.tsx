@@ -9,6 +9,7 @@ import { RadarAxisAverages } from "@/features/radar/RadarPanel";
 import { StrengthWeaknessPanel } from "@/components/fm/StrengthWeaknessPanel";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const AXES: AxisKey[] = [
   "Economia",
@@ -424,7 +425,15 @@ export default function Page() {
 
   return (
     <main className="min-h-dvh bg-zinc-950 text-zinc-100">
-      <div className="mx-auto max-w-6xl px-4 py-8 space-y-5">
+      <div className="mx-auto max-w-6xl px-4 py-10 space-y-5">
+        <div>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm text-zinc-300 hover:text-white/90 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5"
+          >
+            ← Voltar
+          </Link>
+        </div>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h1 className="text-xl font-semibold">Capacidades municipais</h1>
