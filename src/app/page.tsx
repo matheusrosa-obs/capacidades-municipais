@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <main className="min-h-dvh bg-zinc-950 text-zinc-100">
       <div className="mx-auto max-w-2xl px-4 py-20 text-center">
-        <h1 className="text-3xl font-semibold">Capacidades Municipais</h1>
+        <h1 className="text-3xl font-semibold">Capacidades municipais</h1>
         <p className="mt-3 text-zinc-400">Escolha uma visualização para começar.</p>
 
         <div className="mt-8 flex items-center justify-center gap-4">
