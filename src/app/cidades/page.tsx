@@ -446,7 +446,7 @@ export default function Page() {
 
           <div className="flex flex-wrap gap-3">
             <label className="text-sm">
-              <span className="block text-zinc-400 mb-2">Município A</span>
+              <span className="block text-zinc-400 mb-2">Selecione o município:</span>
               <select
                 value={selectedAId}
                 onChange={(e) => setSelectedAId(e.target.value)}
@@ -461,7 +461,7 @@ export default function Page() {
             </label>
 
             <label className="text-sm">
-              <span className="block text-zinc-400 mb-2">Município B (comparar)</span>
+              <span className="block text-zinc-400 mb-2">Para comparar, selecione:</span>
               <select
                 value={selectedBId}
                 onChange={(e) => setSelectedBId(e.target.value)}
